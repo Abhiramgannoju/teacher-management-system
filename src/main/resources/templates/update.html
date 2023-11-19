@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Teachers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .delete-btn {
+            background-color: #ff8080;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #ff5050;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Teachers</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Age</th>
+                <th>Date of Birth</th>
+                <th>Number of Classes</th>
+                <th>Gender</th>
+                <th>Subject</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through the list of teachers and display each teacher's details -->
+            <tr th:each="teacher : ${teachers}">
+                <td th:text="${teacher.id}"></td>
+                <td th:text="${teacher.fullName}"></td>
+                <td th:text="${teacher.age}"></td>
+                <td th:text="${teacher.dateOfBirth}"></td>
+                <td th:text="${teacher.numberOfClasses}"></td>
+                <td th:text="${teacher.gender}"></td>
+                <td th:text="${teacher.subject}"></td>
+                <td>
+                    <form th:action="@{/update/{id}(id=${teacher.id})}" method="get">
+    <button type="submit" class="update-btn">update</button>
+</form>
+
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <!-- Add a link to navigate back to the homepage or any other page as needed -->
+    <p><a th:href="@{/}" style="text-decoration: none;">Back to Home</a></p>
+</body>
+</html>

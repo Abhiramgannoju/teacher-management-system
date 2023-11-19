@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter Teachers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        select,
+        button {
+            width: calc(100% - 22px); /* Adjusted for padding */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            form {
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Filter Teachers</h1>
+    
+    <form th:action="@{/filteredteachers}" method="get">
+        <label for="filterOptions">Filter by:</label>
+        <select id="filterOptions" name="filterBy">
+            <option value="ageAsc">Age (Ascending)</option>
+            <option value="ageDesc">Age (Descending)</option>
+            <option value="classesAsc">Number of Classes (Ascending)</option>
+            <option value="classesDesc">Number of Classes (Descending)</option>
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+    
+    <!-- Add links or other content as needed -->
+</body>
+</html>

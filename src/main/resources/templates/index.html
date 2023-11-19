@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Management System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+  <header>
+    <h1>Teacher Management System</h1>
+  </header>
+
+  <main>
+    <section class="options">
+      <h2>Options:</h2>
+      <ul>
+        <li><a href="/allteachers">Show all teachers</a></li>
+        <!-- Link to your Spring Boot endpoint for adding a teacher -->
+        <li><a href="/addteachers">Add a teacher</a></li>
+        <!-- Link to your Spring Boot endpoint for filtering teachers -->
+        <li><a href="/filter">Filter teachers</a></li>
+        <!-- Link to your Spring Boot endpoint for searching a teacher -->
+        <li><a href="/search">Search for a teacher</a></li>
+        <!-- Link to your Spring Boot endpoint for updating a teacher's record -->
+        <li><a href="/update">Update a teacher's record</a></li>
+        <!-- Link to your Spring Boot endpoint for deleting a teacher -->
+        <li><a href="/delete">Delete a teacher</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Teacher Management System</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Teacher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Teacher</h1>
+    <form th:action="@{/addteachers}" th:object="${teacher}" method="post">
+        <p>
+            Full Name: <input type="text" th:field="*{fullName}"  required>
+        </p>
+        <p>
+            Age: <input type="number" th:field="*{age}" required>
+        </p>
+        <p>
+            Date of Birth: <input type="date" th:field="*{dateOfBirth}" required>
+        </p>
+        <p>
+            Number of Classes: <input type="number" th:field="*{numberOfClasses}" required>
+        </p>
+        <p>
+            Gender: 
+            <select th:field="*{gender}">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </p>
+         <p>
+            Subject: <input type="text" th:field="*{subject}"  required>
+        </p>
+        <p>
+            <button type="submit">Add Teacher</button>
+        </p>
+    </form>
+</body>
+</html>

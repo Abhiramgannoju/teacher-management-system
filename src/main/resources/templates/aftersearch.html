@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Results</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Age</th>
+                <th>Date of Birth</th>
+                <th>Number of Classes</th>
+                <th>Gender</th>
+                <th>Subject</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr th:each="teacher : ${foundTeachers}">
+                <td th:text="${teacher.id}"></td>
+                <td th:text="${teacher.fullName}"></td>
+                <td th:text="${teacher.age}"></td>
+                <td th:text="${teacher.dateOfBirth}"></td>
+                <td th:text="${teacher.numberOfClasses}"></td>
+                <td th:text="${teacher.gender}"></td>
+                <td th:text="${teacher.subject}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+    <p><a th:href="@{/}" style="text-decoration: none;">Back to Home</a></p>
+</body>
+</html>
