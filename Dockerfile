@@ -1,16 +1,17 @@
-#
-# Build stage
-#
-FROM maven:3.8.3-openjdk-17 AS build
-WORKDIR /app
-COPY . /app/
-RUN mvn clean package
+# Use a base image with Java (choose the appropriate version)
+FROM openjdk:11
 
-#
-# Package stage
-#
-FROM openjdk:17-alpine
+# Set the working directory in the container
 WORKDIR /app
-COPY --from=build /app/target/*.jar /app/app.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","app.jar"]
+
+# Copy the Spring Boot application JAR file into the container
+COPY target/demo.jar /app/demo.jar
+
+# Copy the application.properties file into the container
+COPY src/main/resources/application.properties /app/application.properties
+
+# Expose the port that your Spring Boot application uses
+EXPOSE 8091
+
+# Command to run the Spring Boot application when the container starts
+CMD ["java", "-jar", "demo.jar"]
