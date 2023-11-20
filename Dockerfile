@@ -1,15 +1,21 @@
-#
-# Build stage
-#
-FROM maven:3.8.2-jdk-11 AS build
-COPY . .
-RUN mvn clean package
+# Use a base image with JDK and Maven to build the application
+FROM adoptopenjdk:17-jdk-hotspot AS build
+WORKDIR /app
 
-#
-# Package stage
-#
-FROM openjdk:11-jdk-slim
-COPY --from=build /target/demo-0.0.1-SNAPSHOT.jar demo.jar
-# ENV PORT=8080
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","demo.jar"]
+# Copy the Maven project
+COPY pom.xml .
+COPY src ./src
+
+# Build the application
+RUN ./mvnw clean package -DskipTests
+
+# Create a lightweight container with the JAR file
+FROM adoptopenjdk:17-jre-hotspot
+WORKDIR /app
+COPY --from=build /app/target/teacher-0.0.1-SNAPSHOT.jar ./app.jar
+
+# Expose the port your app runs on
+EXPOSE 8091
+
+# Specify the command to run the application
+CMD ["java", "-jar", "app.jar"]
