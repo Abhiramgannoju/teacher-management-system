@@ -1,5 +1,7 @@
 # teacher-management-system
 
+#### To run this project you need to download the zip file and import the file as exiitng maven and create a database in MySQL with your localhost. And change the application properties by chaging he username and paasword of your local host.
+
 # Home Page for teacher management system
 
 ![image](https://github.com/Abhiramgannoju/teacher-management-system/assets/135497842/6480c4b6-c259-46e5-9d8c-0eb7ebc8fba1)
